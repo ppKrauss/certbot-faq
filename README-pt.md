@@ -8,7 +8,7 @@ Para qualquer detalhe, consulte a **documentação completa do `certbot`** em [c
 NOTAS
 
 Este guia foi elaborado com base nos comandos mais frequentemente utilizados do `certbot`. 
-Esse "frequentemente" não é um resultado estatístico, mas uma percepção da comunidade ativa.
+Esse "frequentemente" não é um resultado estático, mas uma percepção da comunidade ativa.
 É também uma compilação dos *[Casos de Uso](https://en.wikipedia.org/wiki/Use_case) mais comuns* do software `certbot`. 
 
 Quando em dúvida sobre alguma *decisão de projeto* ou excesso de detalhes no texto, 
@@ -30,8 +30,8 @@ Use o formulário *"Estou usando ..."* em https://certbot.eff.org
 
 Suponha que você tenha quatro domínios a certificar, e o "domínio mais importante" também o nome do certificado,
 
-* ** Nome do Certificado **: `xxxx.org`
-* ** Lista de domínio ** (de um ou mais): `xxxx.org aaaaa.com aaaaa.org bbbbb.com
+* **Nome do Certificado**: `xxxx.org`
+* **Lista de domínio** (de um ou mais): `xxxx.org aaaaa.com aaaaa.org bbbbb.com`
 
 ### Criando um certificado com um domínio
 
@@ -43,7 +43,7 @@ Dica: use escolher "Seguro" ao selecionar a estratégia de redirecionamento HTTP
 
 Comando: `certbot --cert-name xxxx.org -d xxxx.org -d aaaaa.com -d aaaaa.org`.
 
-Dica: o primeiro (`xxxx.org`) é o * Nome do Certificado *.
+Dica: o primeiro (`xxxx.org`) é o *Nome do Certificado*.
 
 ### Atualizando o certificado uma vez
 
