@@ -1,7 +1,7 @@
 
-# certbot Fast-Guide (draft v0.1)
+# certbot Fast-Guide (draft v0.1b)
 
-`certbot` is a command-line software used in web-servers, and is part of EFF’s effort to encrypt the entire Internet. 
+`certbot` is a command-line software used in web-servers, and is part of EFF’s effort to encrypt the entire Internet. Check version with `certbot --version` and basic usage with `certbot --help`. Certbot can obtain and install [HTTPS](https://en.wikipedia.org/wiki/HTTPS)/[TLS/SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificates.
 
 This Guide is for both, beginners and experient users that need a cheatsheet. For any detail see the **complete `certbot` documentation** at https://certbot.eff.org/docs/ 
 
@@ -18,7 +18,7 @@ The guide is organized into *scenarios* of use cases, supplying command or seque
 
 ## Install certbot
 
-Use the form *"I'm using..."* at https://certbot.eff.org
+To install the `certbot` command, that is the *certbot* software, use the online form *"I'm using..."* at https://certbot.eff.org   <br/>Avoid any other site for this instructions, they are updated every time.
 
 ## Scenario-1
 
@@ -34,19 +34,55 @@ One command: `certbot --cert-name xxxx.org -d xxxx.org`
 Tip: use choose "Secure" when selecting HTTPS redirection strategy.
 
 ### Create a certificate with many domains
+
 One command: `certbot --cert-name xxxx.org -d xxxx.org -d aaaaa.com -d aaaaa.org`. 
 
-Tip: the first (`xxxx.org`) is the *Certificate Name*. 
+Option? `certbot --cert-name xxxx.org -d xxxx.org,aaaaa.com,aaaaa.org`. 
 
-### Refresh the certificate once
+Tip: you can omit the `--cert-name xxxx.org` part, them the first `-d` option (`xxxx.org`) will be the *Certificate Name*. 
 
-One command: `certbot renew`
+### Create a certificate with "unknown domains" in a "unknown server"
 
-Tip: there are also an *automatic renew* procedure, see case "Refresh the certificate forever". 
+One command: `certbot`. 
 
-### Case ... 
+Tip: it is interactive ... but ... ? reliable? Confusion NGINX vs Apache vs Manual? 
+
+### Create a certificate with "unknown domains" in a NGINX server
+
+One command: `certbot --nginx`. 
+
+Tip: it is an interactive command-line interface (CLI),  answer with  caution each question.
+
+
+### To test of simulate a certificate creation instruction
+
+One command: add `--dry-run` option to your command. 
+
+### Case ...
+.... Please help adding more cases! ...
 
 
 ## Scenario-2
-...
+After completed the certification in the *Scenario-1*, you need some usual maintenance tasks after basic installation.
+
+### List a created certificate
+
+One command: `certbot certificates`. 
+
+Tip-1: check if all listed certificates are in use.
+
+Tip-2: to list only domains of a specific *cert-name* as `MyCertName` use `certbot certificates --cert-name MyCertName`.
+
+### Refresh (renew) the certificate once
+
+One command: `certbot renew`
+
+Tip: there are also an *automatic renew* procedure, see case "Refresh the certificate forever".
+
+### Delete domains from certificate
+Is like to redo "Create a certificate" task... So, do it by subtracting from the domain list, the domain that you whant to delete. Example: supposing as in *Scenario-1* that you have a certificate   `xxxx.org` with domains {`xxxx.org`, `aaaaa.com`, `aaaaa.org`}, and suppose that you whant to delete `aaaaa.com`.
+
+One command: `certbot --cert-name xxxx.org -d xxxx.org -d aaaaa.org`. 
+
+Tip: check the certificate listing it.
 
