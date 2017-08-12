@@ -10,8 +10,9 @@ NOTES
 This guide was elaborated with aims in the most frequently used commands of `certbot`, where "frequently" is not a statistical result, but a perception of active community.
 It is also a  compilation of the *most common [Use Cases](https://en.wikipedia.org/wiki/Use_case)* of the `certbot`  software. When a *user decision* is necessary, the Guide use [convention-over-configuration](https://en.wikipedia.org/wiki/Convention_over_configuration) principle to avoid multiple recommendations, and it is explained as "tip".
 
-The guide is organized into *scenarios* of use cases, supplying command or sequence of commands to each use case.
+The guide is organized into *scenarios* of use cases, supplying command or sequence of commands to each use case.  To help edit here, to discuss, see [certbot/issues/4961](https://github.com/certbot/certbot/issues/4961).
 
+-----
 (ToC here)
 
 -----
