@@ -1,5 +1,5 @@
 
-# certbot Fast-Guide (draft v0.1b)
+# certbot Fast-Guide (draft v0.1c)
 
 `certbot` is a command-line software used in web-servers, and is part of EFF’s effort to encrypt the entire Internet. Check version with `certbot --version` and basic usage with `certbot --help`. Certbot can obtain and install [HTTPS](https://en.wikipedia.org/wiki/HTTPS)/[TLS/SSL](https://en.wikipedia.org/wiki/Transport_Layer_Security) certificates.
 
@@ -20,6 +20,7 @@ The guide is organized into *scenarios* of use cases, supplying command or seque
 
 To install the `certbot` command, that is the *certbot* software, use the online form *"I'm using..."* at https://certbot.eff.org   <br/>Avoid any other site for this instructions, they are updated every time.
 
+<!-- ## ## ## -->
 ## Scenario-1
 
 Suppose that you have four domains to be certifyed, and the "most important domain" also the name of the certificate, 
@@ -61,7 +62,7 @@ One command: add `--dry-run` option to your command.
 ### Case ...
 .... Please help adding more cases! ...
 
-
+<!-- ## ## ## -->
 ## Scenario-2
 After completed the certification in the *Scenario-1*, you need some usual maintenance tasks after basic installation.
 
@@ -79,10 +80,24 @@ One command: `certbot renew`
 
 Tip: there are also an *automatic renew* procedure, see case "Refresh the certificate forever".
 
-### Delete domains from certificate
+### Delete domains from a certificate
 Is like to redo "Create a certificate" task... So, do it by subtracting from the domain list, the domain that you whant to delete. Example: supposing as in *Scenario-1* that you have a certificate   `xxxx.org` with domains {`xxxx.org`, `aaaaa.com`, `aaaaa.org`}, and suppose that you whant to delete `aaaaa.com`.
 
 One command: `certbot --cert-name xxxx.org -d xxxx.org -d aaaaa.org`. 
 
 Tip: check the certificate listing it.
 
+### Delete a full certificate
+
+If you see a created certificate by its *cert-name*, when list it, and not using it... Or other motivation to "purge all files" of this (eg. `MyCertName`) certificate. 
+
+One command: `certbot delete --cert-name MyCertName`
+
+### Cancel (revoke) a full certificate with transferred or compromised key 
+If the certificate of, suppose, *cert-name* `MyCertName`, was transferred to another owner or its key was compromised, you need not only to "Delete a full certificate", but also to *revoke* it from internet. 
+
+Commands, step-by-step: 
+
+1. to check path from *cert-name*: `certbot certificates --cert-name MyCertName`
+2. to revoke this *cert-name*: `certbot revoke --cert-path /etc/letsencrypt/live/MyCertName/fullchain.pem`
+3. to purge all files: `certbot delete --cert-name MyCertName`
